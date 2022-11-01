@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using AppTempoAtual.Model;
-using AppTempoAtual.Services
+using AppTempoAtual.Services;
 
 namespace AppTempoAtual
 {
@@ -18,6 +18,23 @@ namespace AppTempoAtual
             InitializeComponent();
             this.Title = "Previsão do Tempo";
             this.BindingContext = new Tempo();
+        }
+
+        private async void btnPrevisao_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(btnPrevisao.Text))
+                {
+                    Tempo previsaoDoTempo = await DataService.GetPrevisaoDoTempo(cidadeEntry.Text);
+                    this.BindingContext = previsaoDoTempo;
+                    btnPrevisao.Text = "Nova Previsão";
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Erro", ex.Message, "OK");
+            }
         }
     }
 }

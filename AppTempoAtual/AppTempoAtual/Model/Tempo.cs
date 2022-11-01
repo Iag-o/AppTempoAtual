@@ -14,7 +14,7 @@ namespace AppTempoAtual.Model
         public string Sunrise { get; set; }
         public string Sunset { get; set; }
 
-        public Tempo(string title, string temperature, string wind, string humidity, string visibility, string sunrise, string sunset)
+        public Tempo()
         {
             this.Title = " ";
             this.Temperature = " ";
@@ -26,3 +26,5 @@ namespace AppTempoAtual.Model
         }
     }
 }
+
+//string title, string temperature, string wind, string humidity, string visibility, string sunrise, string sunset
